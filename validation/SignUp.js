@@ -3,7 +3,6 @@ const isEmpty = require("is-empty");
 
 module.exports = function validateSignUp(data) {
   let errors = {};
-  console.log("==>", data);
 
   data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
   data.lastName = !isEmpty(data.lastName) ? data.lastName : "";

@@ -51,8 +51,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  console.log(req.body.email);
-  console.log(req.body.password);
   const { errors, isValid } = validateSignIn(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -82,6 +80,7 @@ router.post("/login", (req, res) => {
                 success: true,
                 res: 200,
                 token: "Bearer " + token,
+                userData: user,
               });
             }
           }

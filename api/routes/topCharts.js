@@ -150,7 +150,6 @@ router.get("/:chartName", async (req, res) => {
       (item) => item.launguage === req.params.chartName
     );
     const getArtists = await TopCharts.find();
-    console.log(getArtists);
     const filterArtist = getArtists.filter(
       (item) => item.chartName === req.params.chartName
     );

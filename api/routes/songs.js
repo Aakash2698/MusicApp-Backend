@@ -117,7 +117,6 @@ router.get("/all-songs", (req, res, next) => {
 router.get("/:musicType", async (req, res) => {
   try {
     const getSongs = await Songs.find();
-    console.log(getSongs);
     const filterSongs = getSongs.filter((item) =>
       item.songType.includes(req.params.musicType)
     );

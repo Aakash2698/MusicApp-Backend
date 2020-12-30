@@ -3,8 +3,6 @@ const isEmpty = require("is-empty");
 
 module.exports = validateLoginInput = (data) => {
   let errors = {};
-  console.log(data);
-
   // Convert empty fileds to empty string so we can use validator functions
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
