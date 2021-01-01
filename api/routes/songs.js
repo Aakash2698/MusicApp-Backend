@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const Songs = require("../models/Songs");
 const FeatureArtists = require("../models/FeatureArtists");
 const RetroClassic = require("../models/RetroClassic");
+const TopCharts = require("../models/TopCharts");
+const Radio = require("../models/Radio");
+const Genres = require("../models/Genres");
 const multer = require("multer");
 const path = require("path");
 
@@ -119,23 +122,44 @@ router.get("/all-songs", (req, res, next) => {
 router.get("/searchAll/:searchText", async (req, res) => {
   try {
     const searchString = req.params.searchText;
+
+    const getTopCharts = await TopCharts.find();
+    const filterTopCharts = getTopCharts.filter((data) =>
+      new RegExp(searchString, "i").test(data.chartName)
+    );
+
     const getAlbum = await FeatureArtists.find();
     const filterAlbumData = getAlbum.filter((data) =>
       new RegExp(searchString, "i").test(data.artistName)
     );
+
     const getSongs = await Songs.find();
     const filterSongData = getSongs.filter((data) =>
       new RegExp(searchString, "i").test(data.songName)
     );
+
     const getRetro = await RetroClassic.find();
     const filterRetroClassic = getRetro.filter((data) =>
       new RegExp(searchString, "i").test(data.hitsArtistName)
     );
 
+    const getRadio = await Radio.find();
+    const filterRadio = getRadio.filter((data) =>
+      new RegExp(searchString, "i").test(data.radioName)
+    );
+
+    const getGenres = await Genres.find();
+    const filterGenres = getGenres.filter((data) =>
+      new RegExp(searchString, "i").test(data.genresName)
+    );
+
     res.json({
+      topChartsData: filterTopCharts,
       albumData: filterAlbumData,
-      retroClassic: filterRetroClassic,
       songData: filterSongData,
+      retroClassic: filterRetroClassic,
+      radioData: filterRadio,
+      genresData: filterGenres,
     });
   } catch (err) {
     console.log(err.message);
