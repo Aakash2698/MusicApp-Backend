@@ -3,6 +3,8 @@ const app = express();
 const router = express.Router();
 const mongoose = require("mongoose");
 const Songs = require("../models/Songs");
+const FeatureArtists = require("../models/FeatureArtists");
+const RetroClassic = require("../models/RetroClassic");
 const multer = require("multer");
 const path = require("path");
 
@@ -112,6 +114,33 @@ router.get("/all-songs", (req, res, next) => {
         error: err,
       });
     });
+});
+
+router.get("/searchAll/:searchText", async (req, res) => {
+  try {
+    const searchString = req.params.searchText;
+    const getAlbum = await FeatureArtists.find();
+    const filterAlbumData = getAlbum.filter((data) =>
+      new RegExp(searchString, "i").test(data.artistName)
+    );
+    const getSongs = await Songs.find();
+    const filterSongData = getSongs.filter((data) =>
+      new RegExp(searchString, "i").test(data.songName)
+    );
+    const getRetro = await RetroClassic.find();
+    const filterRetroClassic = getRetro.filter((data) =>
+      new RegExp(searchString, "i").test(data.hitsArtistName)
+    );
+
+    res.json({
+      albumData: filterAlbumData,
+      retroClassic: filterRetroClassic,
+      songData: filterSongData,
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("server error");
+  }
 });
 
 router.get("/:musicType", async (req, res) => {
