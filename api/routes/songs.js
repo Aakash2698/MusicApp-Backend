@@ -61,7 +61,6 @@ router.post("/create-genres", (req, res) => {
 });
 
 router.post("/upload-music", upload.single("songUrl"), (req, res, next) => {
-  console.log(req);
   if (!req.file) {
     console.log("No file received");
     return res.send({
@@ -75,6 +74,17 @@ router.post("/upload-music", upload.single("songUrl"), (req, res, next) => {
     });
   }
 });
+
+router.get("/download/:id", async (req, res) => {
+  const song = await Songs.find({ _id: req.params.id });
+  const filePath = song[0].songUrl.split("0/");
+  res.download(filePath[1], song[0].songName + ".mp3");
+});
+
+// router.get("/download", function (req, res, next) {
+//   var filePath = "uploads/1608534678221.mp3";
+//   res.download(filePath);
+// });
 
 router.post("/create-artists-details", (req, res) => {
   const songs = new Songs({
