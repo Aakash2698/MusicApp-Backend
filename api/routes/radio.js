@@ -1,10 +1,7 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
-const mongoose = require("mongoose");
 const Radio = require("../models/Radio");
 const multer = require("multer");
-const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

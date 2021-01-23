@@ -1,7 +1,5 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
-const mongoose = require("mongoose");
 const Songs = require("../models/Songs");
 const FeatureArtists = require("../models/FeatureArtists");
 const RetroClassic = require("../models/RetroClassic");
@@ -9,8 +7,6 @@ const TopCharts = require("../models/TopCharts");
 const Radio = require("../models/Radio");
 const Genres = require("../models/Genres");
 const multer = require("multer");
-const path = require("path");
-const { fstat } = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

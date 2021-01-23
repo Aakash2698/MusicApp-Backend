@@ -1,11 +1,8 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
-const mongoose = require("mongoose");
 const Genres = require("../models/Genres");
 const Songs = require("../models/Songs");
 const multer = require("multer");
-const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

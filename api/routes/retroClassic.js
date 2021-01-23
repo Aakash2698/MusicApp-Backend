@@ -1,10 +1,7 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
-const mongoose = require("mongoose");
 const RetroClassic = require("../models/RetroClassic");
 const multer = require("multer");
-const path = require("path");
 const Songs = require("../models/Songs");
 
 const storage = multer.diskStorage({

@@ -8,9 +8,9 @@ const { OAuth2Client } = require("google-auth-library");
 const multer = require("multer");
 const path = require("path");
 
-const client = new OAuth2Client(
-  "342148260884-dfd3n8vics5h243jgmac95lmjj63btpk.apps.googleusercontent.com"
-);
+// const client = new OAuth2Client(
+//   "342148260884-dfd3n8vics5h243jgmac95lmjj63btpk.apps.googleusercontent.com"
+// );
 
 const validateSignUp = require("../../validation/SignUp");
 const validateSignIn = require("../../validation/SignIn");

@@ -3,7 +3,6 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-var path = require("path");
 require("dotenv").config;
 
 const user = require("./api/routes/user");
@@ -47,7 +46,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/", user);
-
 app.use("/topcharts", topCharts);
 app.use("/new-release", newRelease);
 app.use("/retro-classic", retroClassic);
@@ -55,5 +53,4 @@ app.use("/radio", radio);
 app.use("/feature-artists", FeatureArtists);
 app.use("/genres", genres);
 app.use("/songs", songs);
-
 module.exports = app;

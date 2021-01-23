@@ -1,7 +1,5 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
-const mongoose = require("mongoose");
 const TopCharts = require("../models/TopCharts");
 const Songs = require("../models/Songs");
 const multer = require("multer");
