@@ -3,7 +3,7 @@ const newReleaseSchema = mongoose.Schema({
   songName: {
     type: String,
   },
-  artist: {
+  artistName: {
     type: String,
   },
   songImage: {

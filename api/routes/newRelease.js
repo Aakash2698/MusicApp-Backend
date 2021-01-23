@@ -53,7 +53,7 @@ router.post("/upload-music", upload.single("songUrl"), (req, res, next) => {
 router.post("/create-new-release", (req, res) => {
   const newRelease = new NewRelease({
     songName: req.body.songName,
-    artist: req.body.artist,
+    artistName: req.body.artistName,
     songImage: req.body.songImage,
     songUrl: req.body.songUrl,
   });

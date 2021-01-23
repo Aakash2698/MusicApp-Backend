@@ -18,5 +18,8 @@ const userSchema = mongoose.Schema({
   confirmPassword: {
     type: String,
   },
+  profileImage: {
+    type: String,
+  },
 });
 module.exports = mongoose.model("User", userSchema);

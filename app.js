@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", user);
+
 app.use("/topcharts", topCharts);
 app.use("/new-release", newRelease);
 app.use("/retro-classic", retroClassic);
@@ -53,4 +54,5 @@ app.use("/radio", radio);
 app.use("/feature-artists", FeatureArtists);
 app.use("/genres", genres);
 app.use("/songs", songs);
+
 module.exports = app;
