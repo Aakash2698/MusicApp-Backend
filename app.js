@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 var path = require("path");
+require("dotenv").config;
 
 const user = require("./api/routes/user");
 const topCharts = require("./api/routes/topCharts");
