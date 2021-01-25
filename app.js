@@ -14,17 +14,33 @@ const FeatureArtists = require("./api/routes/featureArtists");
 const genres = require("./api/routes/genres");
 const songs = require("./api/routes/songs");
 
-let db;
-mongoose.connect(
-  "mongodb://localhost/tunexdb",
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err, Database) => {
-    if (!err) {
-      console.log("Database connection successfully");
-    }
-    db = Database;
+const connectDB = async () => {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://aakash_2698:Aakash2698@music-app.knljk.mongodb.net/music-app?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+    console.log("mongo db connected");
+  } catch (err) {
+    console.log(err.message);
   }
-);
+};
+
+connectDB();
+// let db;
+// mongoose.connect(
+//   "mongodb://localhost/tunexdb",
+//   { useNewUrlParser: true, useUnifiedTopology: true },
+//   (err, Database) => {
+//     if (!err) {
+//       console.log("Database connection successfully");
+//     }
+//     db = Database;
+//   }
+// );
 
 app.use(morgan("dev"));
 app.use("/uploads", express.static("uploads"));
