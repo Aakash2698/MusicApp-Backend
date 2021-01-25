@@ -142,7 +142,7 @@ router.post("/login", (req, res) => {
 
 router.put("/update/:userId", (req, res, next) => {
   const id = req.params.userId;
-  let profileLink = `http://localhost:4000/uploads/${req.body.filename}`;
+  let profileLink = `https://music-player-app26.herokuapp.com/uploads/${req.body.filename}`;
 
   User.findByIdAndUpdate(
     { _id: id },

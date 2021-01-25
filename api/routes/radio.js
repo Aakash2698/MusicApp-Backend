@@ -22,7 +22,7 @@ router.post("/upload", upload.single("songImage"), (req, res, next) => {
   } else {
     return res.send({
       success: true,
-      songImage: `http://localhost:4000/uploads/${req.file.filename}`,
+      songImage: `https://music-player-app26.herokuapp.com/uploads/${req.file.filename}`,
     });
   }
 });

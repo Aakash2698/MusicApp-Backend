@@ -25,7 +25,7 @@ router.post("/upload", upload.single("Image"), (req, res, next) => {
     console.log("file received");
     return res.send({
       success: true,
-      ImagePath: `http://localhost:4000/uploads/${req.file.filename}`,
+      ImagePath: `https://music-player-app26.herokuapp.com/uploads/${req.file.filename}`,
     });
   }
 });
@@ -64,7 +64,7 @@ router.post("/upload-music", upload.single("songUrl"), (req, res, next) => {
     console.log("file received");
     return res.send({
       success: true,
-      songUrl: `http://localhost:4000/uploads/${req.file.filename}`,
+      songUrl: `https://music-player-app26.herokuapp.com/uploads/${req.file.filename}`,
     });
   }
 });
