@@ -74,7 +74,7 @@ router.post("/upload-music", upload.single("songUrl"), (req, res, next) => {
 
 router.get("/download/:id", async (req, res) => {
   const song = await Songs.find({ _id: req.params.id });
-  const filePath = song[0].songUrl.split("0/");
+  const filePath = song[0].songUrl.split("com/");
   res.download(filePath[1], song[0].songName + ".mp3");
 });
 
